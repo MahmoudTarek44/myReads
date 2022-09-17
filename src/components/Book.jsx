@@ -1,5 +1,7 @@
 import React from "react";
 
+import DropDown from "./DropDown";
+
 const Book = ({ book, onShelfChange }) => {
 	return (
 		<div className="book">
@@ -12,25 +14,16 @@ const Book = ({ book, onShelfChange }) => {
 						backgroundImage: `url(${book.imageLinks?.thumbnail})`,
 					}}
 				></div>
-				<div className="book-shelf-changer">
-					<select
-						defaultValue={book.shelf ? book.shelf : "none"}
-						onChange={(event) => {
-							onShelfChange(book, event.target.value);
-						}}
-					>
-						<option value="disabled" disabled>
-							Move to...
-						</option>
-						<option value="currentlyReading">Currently Reading</option>
-						<option value="wantToRead">Want to Read</option>
-						<option value="read">Read</option>
-						<option value="none">None</option>
-					</select>
-				</div>
+				<DropDown onShelfChange={onShelfChange} book={book} />
 			</div>
 			<div className="book-title">{book.title}</div>
-			<div className="book-authors">{book.authors[0]}</div>
+			{book.authors?.map((author, i) => {
+				return (
+					<div key={i} className="book-authors">
+						{author}
+					</div>
+				);
+			})}
 		</div>
 	);
 };

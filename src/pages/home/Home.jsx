@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-
-import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
 
 import { getAll, update } from "../../BooksAPI";
 
+import Navbar from "../../components/Navbar";
 import Section from "../../components/Section";
+
 
 const Home = () => {
 	const shelves = [
@@ -16,9 +16,11 @@ const Home = () => {
 	const [allBooks, setAllBooks] = useState([]);
 
 	const onShelfChange = (book, shelfType) => {
-		console.log("book", book);
-		console.log("Shelf", shelfType);
-		update(book, shelfType).then((res) => {
+		update(book, shelfType).then(() => {
+			book.shelf = shelfType;
+			setAllBooks(
+				allBooks.filter((newbook) => newbook.id !== book.id).concat(book)
+			);
 		});
 		getAll().then((books) => {
 			setAllBooks(books);

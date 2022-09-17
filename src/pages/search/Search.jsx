@@ -7,6 +7,7 @@ import Book from "../../components/Book";
 
 const Search = () => {
 	const [searchResult, setSearchResult] = useState([]);
+
 	const onShelfChange = (book, shelfType) => {
 		update(book, shelfType);
 	};
@@ -21,7 +22,7 @@ const Search = () => {
 					<input
 						onChange={({ target }) => {
 							if (target.value) {
-								search(target.value, 10).then((res) => {
+								search(target.value, 20).then((res) => {
 									setSearchResult(res);
 								});
 							} else {
