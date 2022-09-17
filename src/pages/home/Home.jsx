@@ -16,7 +16,10 @@ const Home = () => {
 	const [allBooks, setAllBooks] = useState([]);
 
 	const onShelfChange = (book, shelfType) => {
-		update(book, shelfType);
+		console.log("book", book);
+		console.log("Shelf", shelfType);
+		update(book, shelfType).then((res) => {
+		});
 		getAll().then((books) => {
 			setAllBooks(books);
 		});

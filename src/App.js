@@ -4,6 +4,7 @@ import Home from "./pages/home/Home.jsx";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
+	
 	return (
 		<div className="app">
 			<Routes>
