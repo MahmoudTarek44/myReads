@@ -6,7 +6,6 @@ import { getAll, update } from "../../BooksAPI";
 import Navbar from "../../components/Navbar";
 import Section from "../../components/Section";
 
-
 const Home = () => {
 	const shelves = [
 		{ type: "currentlyReading", title: "Currently Reading" },
@@ -21,9 +20,6 @@ const Home = () => {
 			setAllBooks(
 				allBooks.filter((newbook) => newbook.id !== book.id).concat(book)
 			);
-		});
-		getAll().then((books) => {
-			setAllBooks(books);
 		});
 	};
 
