@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Book from "./Book";
 
-const Section = ({ shelf, books, onShelfChange }) => {
+const Section = ({ shelf, books, onShelfChange, allBooks }) => {
 	const [booksShelf, setBooksShelf] = useState([]);
 
 	useEffect(() => {
@@ -17,7 +17,11 @@ const Section = ({ shelf, books, onShelfChange }) => {
 					{booksShelf.map((book, i) => {
 						return (
 							<li key={i}>
-								<Book onShelfChange={onShelfChange} book={book} />
+								<Book
+									onShelfChange={onShelfChange}
+									allBooks={allBooks}
+									book={book}
+								/>
 							</li>
 						);
 					})}

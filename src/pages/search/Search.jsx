@@ -1,16 +1,25 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+import { getAll } from "../../BooksAPI";
 
 import { search, update } from "../../BooksAPI";
 import Book from "../../components/Book";
 
 const Search = () => {
 	const [searchResult, setSearchResult] = useState([]);
+	const [allBooks, setAllBooks] = useState([]);
 
 	const onShelfChange = (book, shelfType) => {
 		update(book, shelfType);
 	};
+
+	useEffect(() => {
+		getAll().then((books) => {
+			setAllBooks(books);
+		});
+	}, []);
 
 	return (
 		<div className="search-books">
@@ -24,6 +33,7 @@ const Search = () => {
 							if (target.value) {
 								search(target.value, 20).then((res) => {
 									setSearchResult(res);
+									console.log(res);
 								});
 							} else {
 								setSearchResult([]);
@@ -40,7 +50,11 @@ const Search = () => {
 						? searchResult.map((book) => {
 								return (
 									<li key={book.id}>
-										<Book onShelfChange={onShelfChange} book={book} />
+										<Book
+											onShelfChange={onShelfChange}
+											allBooks={allBooks}
+											book={book}
+										/>
 									</li>
 								);
 						  })

@@ -2,7 +2,7 @@ import React from "react";
 
 import DropDown from "./DropDown";
 
-const Book = ({ book, onShelfChange }) => {
+const Book = ({ book, onShelfChange, allBooks }) => {
 	return (
 		<div className="book">
 			<div className="book-top">
@@ -14,7 +14,7 @@ const Book = ({ book, onShelfChange }) => {
 						backgroundImage: `url(${book.imageLinks?.thumbnail})`,
 					}}
 				></div>
-				<DropDown onShelfChange={onShelfChange} book={book} />
+				<DropDown onShelfChange={onShelfChange} allBooks={allBooks} book={book} />
 			</div>
 			<div className="book-title">{book.title}</div>
 			{book.authors?.map((author, i) => {

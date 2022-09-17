@@ -1,10 +1,17 @@
 import React from "react";
 
-const DropDown = ({ book, onShelfChange }) => {
+const DropDown = ({ book, onShelfChange, allBooks }) => {
+	let currentShelf = "none";
+	for (let item of allBooks) {
+		if (item.id === book.id) {
+			currentShelf = item.shelf;
+			break;
+		}
+	}
 	return (
 		<div className="book-shelf-changer">
 			<select
-				defaultValue={book.shelf ? book.shelf : "none"}
+				defaultValue={currentShelf}
 				onChange={(event) => {
 					onShelfChange(book, event.target.value);
 				}}
