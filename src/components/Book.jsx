@@ -22,7 +22,7 @@ const Book = ({ book, onShelfChange, allBooks }) => {
 			</div>
 			<div className="book-title">{book.title}</div>
 			<div className="book-authors">
-				{book.authors ? book.authors[0] : null}
+				{book.authors ? book.authors.join(' - ') : null}
 			</div>
 		</div>
 	);
