@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 
 import Book from "./Book";
 
-const Section = ({ shelf, books, onShelfChange, allBooks }) => {
+const Section = ({ shelf, onShelfChange, allBooks }) => {
 	const [booksShelf, setBooksShelf] = useState([]);
 
 	useEffect(() => {
-		setBooksShelf(books.filter((book) => book.shelf === shelf.type));
-	}, [books, shelf.type]);
+		setBooksShelf(allBooks.filter((book) => book.shelf === shelf.type));
+	}, [allBooks, shelf.type]);
 
 	return (
 		<div className="bookshelf">

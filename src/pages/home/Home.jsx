@@ -38,7 +38,7 @@ const Home = () => {
 						<Section
 							key={i}
 							shelf={shelf}
-							books={allBooks}
+							allBooks={allBooks}
 							onShelfChange={onShelfChange}
 						/>
 					);

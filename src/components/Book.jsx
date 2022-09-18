@@ -14,16 +14,16 @@ const Book = ({ book, onShelfChange, allBooks }) => {
 						backgroundImage: `url(${book.imageLinks?.thumbnail})`,
 					}}
 				></div>
-				<DropDown onShelfChange={onShelfChange} allBooks={allBooks} book={book} />
+				<DropDown
+					onShelfChange={onShelfChange}
+					allBooks={allBooks}
+					book={book}
+				/>
 			</div>
 			<div className="book-title">{book.title}</div>
-			{book.authors?.map((author, i) => {
-				return (
-					<div key={i} className="book-authors">
-						{author}
-					</div>
-				);
-			})}
+			<div className="book-authors">
+				{book.authors ? book.authors[0] : null}
+			</div>
 		</div>
 	);
 };

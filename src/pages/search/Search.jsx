@@ -1,10 +1,7 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { getAll } from "../../BooksAPI";
-
-import { search, update } from "../../BooksAPI";
+import { search, update, getAll } from "../../BooksAPI";
 import Book from "../../components/Book";
 
 const Search = () => {
@@ -33,7 +30,6 @@ const Search = () => {
 							if (target.value) {
 								search(target.value, 20).then((res) => {
 									setSearchResult(res);
-									console.log(res);
 								});
 							} else {
 								setSearchResult([]);
